@@ -2,7 +2,7 @@ import React from 'react'
 import { Changer } from '../'
 
 // book: {url, title, authors}
-export default ({ book: { cover: { width, height }, title, authors } }) => {
+export default ({ book: { cover: { url, width, height }, title, authors } }) => {
     return (
         <div className="book">
             <div className="book-top">

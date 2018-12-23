@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Shelf } from '../../components'
+import * as presenter from './ListBooksPresenter'
 
 export default class ListBooksPage extends Component {
+    async componentDidMount() {
+        const result = await presenter.getAll()
+        console.log('result =>', result)
+
+    }
     render() {
         return (
             <div className="list-books">
@@ -11,7 +17,7 @@ export default class ListBooksPage extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        {getMockData().map(shelf => <Shelf shelf={shelf} />)}
+                        {getMockData().map(shelf => <Shelf key={shelf.title} shelf={shelf} />)}
                     </div>
                 </div>
                 <div className="open-search">
