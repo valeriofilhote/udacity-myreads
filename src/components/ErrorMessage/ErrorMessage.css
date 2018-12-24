@@ -1,0 +1,11 @@
+.errorMessage{
+    width: 100px;
+    margin: 100px auto;
+}
+.errorMessage .title {
+   text-align: center;
+}
+.errorMessage .message {
+    color: red;
+    text-align: center;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Changer } from '../'
 
 // book: {url, title, authors}
-export default ({ book: { cover: { url, width, height }, title, authors } }) => {
+export default ({ book: { cover: { url, width, height }, title, authors, belongTo } }) => {
     return (
         <div className="book">
             <div className="book-top">
@@ -12,7 +12,7 @@ export default ({ book: { cover: { url, width, height }, title, authors } }) => 
                     backgroundImage: `url(${url})`
                 }}></div>
                 <div className="book-shelf-changer">
-                    <Changer />
+                    <Changer selectedShelf={belongTo} />
                 </div>
             </div>
             <div className="book-title">{title}</div>

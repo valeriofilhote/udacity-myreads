@@ -1,0 +1,38 @@
+.loading{
+    width:100px;
+    margin: 100px auto;
+    text-align: center;
+}
+.loading .indicator{
+    display: inline-block;
+    width:15px;
+    height: 15px;
+    border: 1px solid #000;
+    margin-left: 5px;
+}
+.loading .indicator-1{
+    animation: fill 2s ease-in-out  infinite;
+}
+.loading .indicator-2{
+    animation: fill 2s ease-in-out 0.5s infinite;
+}
+.loading .indicator-3{
+    animation: fill 2s ease-in-out 1s infinite;
+}
+.loading .indicator-4{
+    animation: fill 2s ease-in-out 1.5s infinite;
+}
+@keyframes fill {
+    0%{
+        background-color: #000
+    }
+    25%{
+        background-color:  #fff
+    }
+    75%{
+        background-color: #fff
+    }
+    100%{
+        background-color: #fff
+    }
+}
