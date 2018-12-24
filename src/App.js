@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { ListBooksPage, SearchPage } from './containers'
 class BooksApp extends React.Component {
 
+  //TODO: 1. PropTypes, 2.Main component to hold shelves
   render() {
     return (
       <BrowserRouter>

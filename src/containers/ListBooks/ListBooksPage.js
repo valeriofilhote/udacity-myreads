@@ -9,6 +9,27 @@ export default class ListBooksPage extends Component {
         errorMessage: '',
         shelves: []
     }
+    // ***********************************
+    // Events
+    // ***********************************
+    onMoveToHandler = async (book, newShelfName) => {
+        try {
+            // Moving Book: book.isMoving = true
+            this.setState(state => {
+                return {
+                    shelves: presenter.updateBook(book, [...state.shelves])
+                }
+            })
+            // Update API
+            const shelves = await presenter.updateShelves(book, newShelfName, [...this.state.shelves])
+            this.setState({ shelves })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    // ***********************************
+    // Hooks
+    // ***********************************
     async componentDidMount() {
         try {
             const shelves = await presenter.getAll()
@@ -41,7 +62,12 @@ export default class ListBooksPage extends Component {
                         </div>
                         <div className="list-books-content">
                             <div>
-                                {this.state.shelves.map(shelf => <Shelf key={shelf.title} shelf={shelf} />)}
+                                {this.state.shelves.map(shelf => (
+                                    <Shelf
+                                        onMoveTo={this.onMoveToHandler}
+                                        key={shelf.id}
+                                        shelf={shelf} />
+                                ))}
                             </div>
                         </div>
                         <div className="open-search">
