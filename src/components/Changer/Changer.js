@@ -17,6 +17,7 @@ export default ({ selectedShelf, onMoveTo }) => (
             Read
         </option>
         <option value={shelfTypes.NONE}>
+            {selectedShelf === shelfTypes.NONE ? String.fromCharCode(10004, 32) : null}
             None
         </option>
     </select>
