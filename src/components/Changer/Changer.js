@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { shelfTypes } from '../../constants'
 
-export default ({ selectedShelf, onMoveTo }) => (
+const Changer = ({ selectedShelf, onMoveTo }) => (
     <select onChange={event => onMoveTo(event.target.value)} value={selectedShelf}>
         <option value="move" disabled>Move to...</option>
         <option value={shelfTypes.CURRENT_READING}>
@@ -22,3 +23,13 @@ export default ({ selectedShelf, onMoveTo }) => (
         </option>
     </select>
 )
+Changer.propTypes = {
+    selectedShelf: PropTypes.oneOf([
+        shelfTypes.CURRENT_READING,
+        shelfTypes.WANT_TO_READ,
+        shelfTypes.READ,
+        shelfTypes.NONE
+    ]).isRequired,
+    onMoveTo: PropTypes.func.isRequired
+}
+export default Changer

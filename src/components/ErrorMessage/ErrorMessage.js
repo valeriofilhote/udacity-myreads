@@ -1,7 +1,8 @@
 import React from 'react'
 import './ErrorMessage.css'
+import PropTypes from 'prop-types'
 
-export default ({ title, message }) => {
+const ErrorMessage = ({ title, message }) => {
     return (
         <div className="errorMessage">
             <h5 className="title">{title}</h5>
@@ -9,3 +10,8 @@ export default ({ title, message }) => {
         </div>
     )
 }
+ErrorMessage.propTypes = {
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired
+}
+export default ErrorMessage

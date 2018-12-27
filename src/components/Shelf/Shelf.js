@@ -1,6 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Book } from '../'
-export default ({ shelf: { title, books }, onMoveTo }) => {
+
+const Shelf = ({ shelf: { title, books }, onMoveTo }) => {
     return (
         <div className="bookshelf">
             <h2 className="bookshelf-title">{title}</h2>
@@ -18,3 +21,13 @@ export default ({ shelf: { title, books }, onMoveTo }) => {
         </div>
     )
 }
+
+Shelf.propTypes = {
+    shelf: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        books: PropTypes.array.isRequired
+    }),
+    onMoveTo: PropTypes.func
+}
+
+export default Shelf

@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Loading.css'
 
-export default ({ children }) => {
+const Loading = ({ children }) => {
     return (
         <div className="loading">
             <h5>{children}</h5>
@@ -12,3 +13,8 @@ export default ({ children }) => {
         </div>
     )
 }
+Loading.propTypes = {
+    children: PropTypes.element.isRequired
+}
+
+export default Loading
