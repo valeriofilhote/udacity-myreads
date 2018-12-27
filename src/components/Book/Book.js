@@ -51,7 +51,10 @@ Book.propTypes = {
             height: PropTypes.number
         }).isRequired,
         title: PropTypes.string.isRequired,
-        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+        authors: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.string),
+            PropTypes.string
+        ]).isRequired,
         belongsTo: PropTypes.oneOf([
             shelfTypes.CURRENT_READING,
             shelfTypes.WANT_TO_READ,

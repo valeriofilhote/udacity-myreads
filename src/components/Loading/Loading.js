@@ -14,7 +14,7 @@ const Loading = ({ children }) => {
     )
 }
 Loading.propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.string.isRequired
 }
 
 export default Loading
