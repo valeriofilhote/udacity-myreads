@@ -1,5 +1,6 @@
 import * as api from '../../api/BooksAPI'
 import * as util from '../../util/util'
+import { shelfTypes } from '../../constants';
 /**
  * @description Parse API result into Front-End´s view object
  */
@@ -42,15 +43,20 @@ export async function updateShelves(book, newShelfName, shelves) {
     if (shelf) {
         await api.update(book, newShelfName)
         shelf.books = shelf.books.filter(b => b.id !== book.id)
-        //FIXME: when newShelfName = 'NONE'
-        // Moving to the new shelf
-        shelf = shelves.find(s => s.id === newShelfName)
-        if (shelf) {
-            book.belongsTo = newShelfName
-            book.isMoving = false
-            shelf.books.push(book)
+
+        if (newShelfName === shelfTypes.NONE) {
             return shelves
+        } else {
+            shelf = shelves.find(s => s.id === newShelfName)
+            if (shelf) {
+                book.belongsTo = newShelfName
+                book.isMoving = false
+                shelf.books.push(book)
+                return shelves
+            }
         }
+
+
     }
     throw new Error('Actual Shelf was not found')
 }
